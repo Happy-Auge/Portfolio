@@ -74,3 +74,192 @@ dev.style.display = "block";
 }
 
 });
+// ===== Developer Mode Activation =====
+
+document.addEventListener("keydown", function(e){
+
+if(e.ctrlKey && e.shiftKey && e.key === "D"){
+
+document.getElementById("dev-mode").style.display="block";
+
+startGame();
+
+}
+
+});
+
+function closeDev(){
+
+document.getElementById("dev-mode").style.display="none";
+
+}
+
+
+
+// ===== Game Setup =====
+
+const canvas = document.getElementById("gameCanvas");
+
+const ctx = canvas.getContext("2d");
+
+let player = {
+
+x:50,
+
+y:220,
+
+width:30,
+
+height:30,
+
+vy:0,
+
+jumping:false
+
+};
+
+let gravity = 0.8;
+
+let obstacle = {
+
+x:800,
+
+y:230,
+
+width:20,
+
+height:20
+
+};
+
+let gameScore = 0;
+
+
+
+// ===== Jump Control =====
+
+document.addEventListener("keydown", function(e){
+
+if(e.code === "Space" && !player.jumping){
+
+player.vy = -12;
+
+player.jumping = true;
+
+}
+
+});
+
+
+
+// ===== Game Loop =====
+
+function update(){
+
+// gravity
+
+player.vy += gravity;
+
+player.y += player.vy;
+
+
+
+if(player.y >= 220){
+
+player.y = 220;
+
+player.jumping = false;
+
+}
+
+
+
+// move obstacle
+
+obstacle.x -= 6;
+
+
+
+if(obstacle.x < -20){
+
+obstacle.x = 800;
+
+gameScore++;
+
+}
+
+
+
+// collision detection
+
+if(
+
+player.x < obstacle.x + obstacle.width &&
+
+player.x + player.width > obstacle.x &&
+
+player.y < obstacle.y + obstacle.height &&
+
+player.y + player.height > obstacle.y
+
+){
+
+alert("Game Over! Score: " + gameScore);
+
+gameScore = 0;
+
+obstacle.x = 800;
+
+}
+
+
+
+draw();
+
+requestAnimationFrame(update);
+
+}
+
+
+
+// ===== Drawing =====
+
+function draw(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+
+
+// player
+
+ctx.fillStyle="#00ff00";
+
+ctx.fillRect(player.x,player.y,player.width,player.height);
+
+
+
+// obstacle
+
+ctx.fillStyle="red";
+
+ctx.fillRect(obstacle.x,obstacle.y,obstacle.width,obstacle.height);
+
+
+
+// score
+
+ctx.fillStyle="#00ff00";
+
+ctx.font="20px monospace";
+
+ctx.fillText("Score: "+gameScore,650,30);
+
+}
+
+
+
+function startGame(){
+
+update();
+
+}
