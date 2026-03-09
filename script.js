@@ -64,3 +64,13 @@ document.getElementById("next-btn").onclick=()=>{
 
 // Initial
 loadQuestion();
+document.addEventListener("keydown", function(e){
+
+if(e.ctrlKey && e.shiftKey && e.key === "D"){
+
+const dev = document.getElementById("dev-mode");
+dev.style.display = "block";
+
+}
+
+});
