@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Portfolio Paul Müller</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Portfolio.css">
+</head>
+<body>
+
+<div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Paul Müller</h2>
+        <ul>
+            <li onclick="showSection('begruessung')"><i class="fas fa-smile"></i> Begrüßung</li>
+            <li onclick="showSection('persoenlich')"><i class="fas fa-user"></i> Persönliche Daten</li>
+            <li onclick="showSection('hobbys')"><i class="fas fa-gamepad"></i> Hobbys</li>
+            <li onclick="showSection('ausbildung')"><i class="fas fa-graduation-cap"></i> Ausbildung</li>
+            <li onclick="showSection('weiterbildung')"><i class="fas fa-certificate"></i> Qualifikationen</li>
+            <li onclick="showSection('berufsprofil')"><i class="fas fa-briefcase"></i> Berufsprofil</li>
+            <li onclick="showSection('quiz')"><i class="fas fa-question-circle"></i> Quiz</li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <section id="begruessung" class="active">
+            <h1 id="greeting">Willkommen!</h1>
+            <p id="greeting-text">Schön, dass du hier bist.</p>
+        </section>
+
+        <section id="persoenlich">
+            <h1>Persönliche Daten</h1>
+            <p><strong>Name:</strong> Paul Müller</p>
+            <p><strong>Geburtsdatum:</strong> 03.04.2012</p>
+            <p><strong>Adresse:</strong> Mettmnriedstrasse 25, 8606 Nänikon</p>
+            <p><strong>Email:</strong> paul.mueller@oswueri.ch</p>
+        </section>
+
+        <section id="hobbys">
+            <h1>Hobbys</h1>
+            <ul>
+                <li>Freerunning</li>
+                <li>Gamen</li>
+            </ul>
+        </section>
+
+        <section id="ausbildung">
+            <h1>Ausbildung</h1>
+            <p>Primarschule Nänikon – 2017–2023</p>
+            <p>Sekundarschule Nänikon – 2023–Jetzt</p>
+        </section>
+
+        <section id="weiterbildung">
+            <h1>Zusätzliche Qualifikationen / Weiterbildungen</h1>
+            <ul><li>Keine</li></ul>
+        </section>
+
+        <section id="berufsprofil">
+            <h1>Berufsprofil</h1>
+            <p>Nichts</p>
+        </section>
+
+        <section id="quiz">
+            <h1>Quiz über den Lebenslauf</h1>
+            <div class="quiz-container">
+                <p id="question"></p>
+                <ul id="answers"></ul>
+                <div class="quiz-footer">
+                    <p id="score"></p>
+                    <div id="progress-bar"><div id="progress"></div></div>
+                </div>
+                <button id="next-btn">Nächste Frage</button>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
